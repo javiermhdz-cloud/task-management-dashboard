@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { getApiErrorMessage } from '../services/httpClient';
 import { getTasks } from '../services/taskService';
 import type { Task } from '../types';
 
@@ -27,8 +28,8 @@ export function TaskList({
       setLocalError(null);
       const data = await getTasks(); 
       setLocalTasks(data);
-    } catch (err: any) {
-      setLocalError(err.message || 'Error al conectar con la API');
+    } catch (err: unknown) {
+      setLocalError(getApiErrorMessage(err));
     } finally {
       setLocalLoading(false);
     }
@@ -58,7 +59,11 @@ export function TaskList({
       )}
 
       {loading && <p>Cargando tareas desde el servidor...</p>}
-      {error && <p style={{ color: 'red' }}>Error: {error}</p>}
+      {error && (
+        <pre style={{ color: '#b91c1c', whiteSpace: 'pre-wrap', fontSize: 13, background: '#fef2f2', padding: 12, borderRadius: 8 }}>
+          {error}
+        </pre>
+      )}
 
       {!loading && !error && tasks.length === 0 && (
         <p style={{ fontStyle: 'italic', color: '#666' }}>No hay tareas registradas en este momento.</p>

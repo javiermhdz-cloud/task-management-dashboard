@@ -1,4 +1,3 @@
-import Alert from '@mui/material/Alert'
 import CircularProgress from '@mui/material/CircularProgress'
 import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
@@ -7,6 +6,7 @@ import ListItemText from '@mui/material/ListItemText'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import { useNavigate } from 'react-router-dom'
+import { ApiErrorAlert } from './ApiErrorAlert'
 import type { Project } from '../types'
 
 interface ProjectListProps {
@@ -27,7 +27,7 @@ export function ProjectList({ projects, loading, error }: ProjectListProps) {
   }
 
   if (error) {
-    return <Alert severity="error">{error}</Alert>
+    return <ApiErrorAlert message={error} />
   }
 
   if (projects.length === 0) {

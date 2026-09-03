@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { getApiErrorMessage } from '../services/httpClient'
 import { createTask } from '../services/taskService'
 
 interface UseTaskFormOptions {
@@ -39,7 +40,7 @@ export function useTaskForm({ projectId, onSuccess }: UseTaskFormOptions) {
       reset()
       onSuccess?.()
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Error al crear la tarea')
+      setError(getApiErrorMessage(err))
     } finally {
       setSubmitting(false)
     }

@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { getApiErrorMessage } from '../services/httpClient'
 import { createProject } from '../services/projectService'
 
 interface UseProjectFormOptions {
@@ -34,7 +35,7 @@ export function useProjectForm({ onSuccess }: UseProjectFormOptions = {}) {
       reset()
       onSuccess?.()
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Error al crear el proyecto')
+      setError(getApiErrorMessage(err))
     } finally {
       setSubmitting(false)
     }

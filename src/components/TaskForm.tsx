@@ -1,9 +1,9 @@
-import Alert from '@mui/material/Alert'
 import Button from '@mui/material/Button'
 import MenuItem from '@mui/material/MenuItem'
 import Stack from '@mui/material/Stack'
 import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
+import { ApiErrorAlert } from './ApiErrorAlert'
 
 interface TaskFormProps {
   title: string
@@ -33,7 +33,7 @@ export function TaskForm({
   return (
     <Stack spacing={2} component="form" onSubmit={handleSubmit}>
       <Typography variant="h6">Crear nueva tarea en este proyecto</Typography>
-      {error && <Alert severity="error">{error}</Alert>}
+      {error && <ApiErrorAlert message={error} />}
       <TextField
         label="Título de la tarea"
         value={title}

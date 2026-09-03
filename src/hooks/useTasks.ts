@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from 'react'
+import { getApiErrorMessage } from '../services/httpClient'
 import { getTasks, deleteTask, updateTaskStatus } from '../services/taskService'
 import type { Task } from '../types'
 
@@ -27,7 +28,7 @@ export function useTasks(projectId?: number) {
       })
       .catch((err: unknown) => {
         if (!cancelled) {
-          setError(err instanceof Error ? err.message : 'Error al cargar tareas')
+          setError(getApiErrorMessage(err))
         }
       })
       .finally(() => {
@@ -44,7 +45,7 @@ export function useTasks(projectId?: number) {
       await deleteTask(id)
       refetch()
     } catch (err) {
-      alert(err instanceof Error ? err.message : 'Error al borrar tarea')
+      alert(getApiErrorMessage(err))
     }
   }
 
@@ -53,7 +54,7 @@ export function useTasks(projectId?: number) {
       await updateTaskStatus(id, newStatus)
       refetch()
     } catch (err) {
-      alert(err instanceof Error ? err.message : 'Error al cambiar estado')
+      alert(getApiErrorMessage(err))
     }
   }
 

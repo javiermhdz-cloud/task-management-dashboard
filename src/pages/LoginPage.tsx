@@ -7,6 +7,7 @@ import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { ApiErrorAlert } from '../components/ApiErrorAlert'
 import { useAuth } from '../hooks/useAuth'
 import { API_URL } from '../types'
 
@@ -45,7 +46,7 @@ export function LoginPage() {
       <Paper sx={{ p: 3 }}>
         <form onSubmit={handleSubmit}>
           <Stack spacing={2}>
-            {error && <Alert severity="error">{error}</Alert>}
+            {error && <ApiErrorAlert message={error} />}
 
             <Alert severity="info" variant="outlined">
               API: <strong>{API_URL}</strong>

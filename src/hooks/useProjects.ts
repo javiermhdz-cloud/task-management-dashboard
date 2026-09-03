@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from 'react'
+import { getApiErrorMessage } from '../services/httpClient'
 import { getProjects } from '../services/projectService'
 import type { Project } from '../types'
 
@@ -23,7 +24,7 @@ export function useProjects() {
       })
       .catch((err: unknown) => {
         if (!cancelled) {
-          setError(err instanceof Error ? err.message : 'Error al cargar proyectos')
+          setError(getApiErrorMessage(err))
         }
       })
       .finally(() => {
