@@ -36,10 +36,10 @@ export function LoginPage() {
   return (
     <Box maxWidth={480} mx="auto" mt={8}>
       <Typography variant="h4" gutterBottom>
-        Miercoles-3: Tasks API Demo
+        JWT Auth Demo
       </Typography>
       <Typography variant="body2" color="text.secondary" sx={{ mb: 3 }}>
-        Autenticación JWT y gestión de tareas conectadas por proyecto.
+        Fase 1 — servicio + hook + pantalla de login.
       </Typography>
 
       <Paper sx={{ p: 3 }}>
