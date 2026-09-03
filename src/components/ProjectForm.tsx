@@ -28,7 +28,9 @@ export function ProjectForm({
   return (
     <Stack spacing={2} component="form" onSubmit={handleSubmit}>
       <Typography variant="h6">Nuevo proyecto</Typography>
+
       {error && <Alert severity="error">{error}</Alert>}
+
       <TextField
         label="Nombre"
         value={name}

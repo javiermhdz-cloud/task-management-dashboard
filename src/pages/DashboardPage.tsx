@@ -23,14 +23,14 @@ export function DashboardPage() {
   }
 
   return (
-    <Box maxWidth={720} mx="auto" mt={6} px={2}>
+    <Box maxWidth={640} mx="auto" mt={6}>
       <Stack direction="row" justifyContent="space-between" alignItems="center" mb={3}>
         <Box>
           <Typography variant="h4" gutterBottom>
-            Dashboard de Proyectos
+            Dashboard
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            Selecciona un proyecto para gestionar sus tareas (CRUD completo).
+            Fase 4 — formulario + lista conectados.
           </Typography>
         </Box>
         <Button startIcon={<LogoutIcon />} onClick={handleLogout}>

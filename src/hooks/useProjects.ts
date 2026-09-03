@@ -2,7 +2,14 @@ import { useCallback, useEffect, useState } from 'react'
 import { getProjects } from '../services/projectService'
 import type { Project } from '../types'
 
-export function useProjects() {
+interface UseProjectsResult {
+  projects: Project[]
+  loading: boolean
+  error: string | null
+  refetch: () => void
+}
+
+export function useProjects(): UseProjectsResult {
   const [projects, setProjects] = useState<Project[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
